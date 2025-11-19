@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Club 127 | Руководство по автоматизации и виртуальным ассистентам на ИИ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Club 127 - полное руководство по автоматизации бизнеса. Избавьтесь от рутины с помощью виртуальных ассистентов и нейросетей. Готовые решения для автоматизации работы и обучение использованию ИИ инструментов." />
+  <meta name="keywords" content="виртуальные ассистенты, нейросети, ИИ, автоматизация бизнеса, Claude, ChatGPT, готовые решения, обучение AI, Club 127, виртуальные помощники, искусственный интеллект, Perplexity, Gemini, DeepSeek, AI для бизнеса, обучение нейросетям, избавление от рутины, автоматизация работы, готовые решения для бизнеса, AI инструменты, виртуальный помощник для работы, нейросеть для бизнеса, автоматизация процессов, избавиться от рутины" />
+  <meta name="author" content="Club 127" />
+  <meta name="theme-color" content="#2563eb" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="language" content="Russian" />
+  
+  <!-- Open Graph теги для социальных сетей -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://club127.com" />
+  <meta property="og:title" content="Club 127 | Руководство по ИИ и виртуальным ассистентам" />
+  <meta property="og:description" content="Автоматизация бизнеса и избавление от рутины. Готовые решения с виртуальными ассистентами и ИИ. Обучение нейросетям в Club 127." />
+  <meta property="og:site_name" content="Club 127" />
+  
+  <!-- Twitter Card теги -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Club 127 | Руководство по ИИ и автоматизации" />
+  <meta name="twitter:description" content="Полное руководство по нейросетям, виртуальным ассистентам и автоматизации бизнеса. Обучение и готовые решения." />
+  
+  <!-- Дополнительные SEO теги -->
+  <meta name="revisit-after" content="7 days" />
+  <meta name="copyright" content="Club 127 2025" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Tailwind для приветственного экрана -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Шрифт + основные стили сайта -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-page: #f5f5f7;
+      --bg-surface: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --border-subtle: #e5e7eb;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --radius-lg: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Анимации приветственного экрана ===== */
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+    }
+
+    .animate-shake {
+      animation: shake 0.25s ease-in-out;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .animate-fade-out {
+      animation: fadeOut 0.5s ease-out forwards;
+    }
+
+    @keyframes slideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-slide-up {
+      animation: slideUp 0.6s ease-out;
+    }
+
+    .hover-elevate {
+      transition: all 150ms;
+    }
+
+    .hover-elevate:hover {
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    .hover-elevate:active {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    .input-focus:focus-within {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.15);
+    }
+
+    .input-error {
+      border-color: #ef4444 !important;
+      box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.25);
+    }
+
+    .error-text {
+      color: #b91c1c;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    /* ===== Хедер Club 127 ===== */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(245, 245, 247, 0.96),
+        rgba(245, 245, 247, 0.92)
+      );
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+      box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.04),
+        0 1px 0 rgba(255, 255, 255, 0.8) inset;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0f172a;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .header-cta {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: radial-gradient(circle at top left,
+          rgba(255, 255, 255, 1),
+          rgba(248, 250, 252, 0.98));
+      color: #111827;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      text-decoration: none;
+      box-shadow:
+        0 10px 26px rgba(15, 23, 42, 0.06),
+        0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+      transform: translateY(0);
+      transition:
+        background 150ms ease,
+        color 150ms ease,
+        border-color 150ms ease,
+        box-shadow 150ms ease,
+        transform 80ms ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .header-cta-label {
+      white-space: nowrap;
+    }
+
+    .header-cta-icon {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .header-cta:hover {
+      background: var(--accent);
+      color: #f9fafb;
+      border-color: var(--accent);
+      box-shadow: none;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .header-cta:active {
+      transform: translateY(0);
+      box-shadow:
+        0 6px 18px rgba(15, 23, 42, 0.16),
+        0 0 0 1px rgba(15, 23, 42, 0.7) inset;
+    }
+
+    /* ===== Основной макет ===== */
+
+    .layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(260px, 0.9fr);
+      column-gap: 48px;
+    }
+
+    .content {
+      max-width: 720px;
+    }
+
+    .page-eyebrow-main {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .page-title-main {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+      color: var(--accent);
+    }
+
+    .page-subtitle {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-main);
+      max-width: 620px;
+      margin-bottom: 22px;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .meta-dot::before {
+      content: "•";
+      margin-right: 6px;
+    }
+
+    .section-card {
+      padding: 26px 24px;
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.04),
+        0 0 0 1px rgba(229, 231, 235, 0.9);
+      margin-bottom: 20px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      margin: 0 0 10px;
+      color: var(--accent);
+    }
+
+    .section-body p {
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0 0 12px;
+      color: var(--text-main);
+    }
+    .section-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-body ul {
+      margin: 16px 0 12px 18px;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-main);
+      list-style: disc;
+    }
+
+    .muted-box {
+      margin-top: 16px;
+      margin-bottom: 16px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #f9fafb;
+      border: 1px solid var(--border-subtle);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .muted-box strong {
+      color: var(--text-main);
+    }
+
+    .dev-quote {
+      border-left: 3px solid var(--border-subtle);
+      padding-left: 12px;
+      margin: 10px 0 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .dev-number-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .dev-number-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .dev-number {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      font-size: 11px;
+      color: var(--text-muted);
+      background: #f9fafb;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    .inline-highlight {
+      background: #fef9c3;
+      border-radius: 4px;
+      padding: 0 4px;
+    }
+
+    .inline-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Sidebar */
+
+    .sidebar {
+      position: sticky;
+      top: 86px;
+      align-self: flex-start;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .sidebar-title {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+
+    .sidebar-nav {
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px 0;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.05);
+    }
+
+    .sidebar-group-label {
+      padding: 6px 14px 4px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      padding: 8px 14px;
+      text-decoration: none;
+      color: var(--text-muted);
+      border-left: 2px solid transparent;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      line-height: 1.4;
+    }
+    .sidebar-nav a:hover {
+      background: #f9fafb;
+      color: var(--text-main);
+    }
+    .sidebar-nav a.is-active {
+      border-left-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .sidebar-footer {
+      margin-top: 14px;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .sidebar-footer a {
+      font-weight: 500;
+    }
+
+    /* ===== Футер ===== */
+
+    .footer {
+      border-top: 1px solid rgba(229, 231, 235, 0.9);
+      background: rgba(245, 245, 247, 0.96);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 24px 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Адаптивность */
+
+    @media (max-width: 1024px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+        column-gap: 0;
+      }
+
+      .content {
+        max-width: none;
+      }
+
+      .sidebar {
+        position: static;
+        margin-top: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        padding-inline: 16px;
+      }
+
+      .layout {
+        padding: 20px 16px 32px;
+      }
+
+      .section-card {
+        padding: 22px 18px;
+      }
+
+      .page-title-main {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Приветственный экран -->
+  <div id="splash-container" class="fixed inset-0 bg-[#FAFAFA] z-50 flex items-center justify-center p-5">
+    <div class="w-full max-w-[800px] text-center animate-slide-up">
+      <h1 class="text-[32px] font-semibold mb-5 text-[#080808] leading-[1.2]">
+        Готовы стать эффективнее в сотни раз?
+      </h1>
+
+      <div id="input-container" class="flex items-center gap-3 border border-[#E5E7EB] bg-white rounded-[24px] px-4 py-3 shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-all duration-150 input-focus">
+        <svg class="w-5 h-5 text-[#9CA3AF] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+
+        <input
+          id="splash-input"
+          type="text"
+          placeholder="Напишите «да» и нажмите Enter"
+          class="flex-1 border-none outline-none text-base bg-transparent text-[#080808] placeholder:text-[#9CA3AF]"
+          autocomplete="off"
+        />
+
+        <button id="submit-btn" class="flex-shrink-0 p-2 hover-elevate rounded-full transition-all duration-150" aria-label="Продолжить">
+          <svg class="w-5 h-5 text-[#6B7280] hover:text-[#080808] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </button>
+      </div>
+
+      <p id="error-label" class="error-text hidden">
+        Кажется, это не «да». Попробуйте ещё раз.
+      </p>
+
+      <div class="inline-flex items-center gap-2 border border-[#E5E7EB] bg-white rounded-full px-3 py-2 mt-3.5 text-sm text-[#6B7280] pointer-events-none">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2">
+          <path d="M4 12h16M12 4v16"/>
+        </svg>
+        Club 127
+      </div>
+    </div>
+  </div>
+
+  <!-- Хедер -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-title">Club 127</div>
+      </div>
+      <div class="header-meta">
+        <a class="header-cta" href="https://t.me/club127_bot" target="_blank" rel="noopener noreferrer">
+          <span class="header-cta-label">Вступить в клуб</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Основной макет сайта -->
+  <main class="layout">
+    <article class="content">
+      <div>
+        <div class="page-eyebrow-main">Поздравляем!</div>
+        <h1 class="page-title-main">Руководство по виртуальным помощникам</h1>
+        <p class="page-subtitle">
+          Пока 99% предпринимателей жалуются на нехватку времени и выгорание, вы вошли в 1% тех, кто действует.
+        </p>
+
+        <div class="meta-row">
+          <span>Обновлено: 19 ноября 2025</span>
+          <span class="meta-dot">Для новых и действующих участников клуба</span>
+        </div>
+      </div>
+
+      <section id="intro" class="section-card" aria-labelledby="intro-title">
+        <div class="section-kicker">Введение</div>
+        <h2 id="intro-title" class="section-title">Как пользоваться этим руководством</h2>
+        <div class="section-body">
+          <p>
+            <strong>«Это руководство огромное, я не осилю...» — стоп.</strong>
+          </p>
+          <p>
+            Да, оно подробное. Но <strong>это не учебник для зубрёжки — это шпаргалка</strong>, которую вы откроете рядом с компьютером и будете следовать шаг за шагом.
+          </p>
+          <ul>
+            <li>Написано максимально простым языком</li>
+            <li>Каждый шаг с конкретными действиями</li>
+            <li>Есть примеры и скриншоты</li>
+            <li>Можно читать по диагонали, сканируя нужные разделы</li>
+          </ul>
+          <div class="muted-box">
+            <strong>Время на освоение:</strong> 10 минут чтения + 15 минут настройки = вы уже работаете эффективнее 99% всех людей на планете. Без преувеличения.
+          </div>
+          <p>
+            Держите это руководство открытым как справочник. Тут нет ничего сложного, после 2–3 раз будете делать это на автомате.
+          </p>
+          <p>
+            <strong>Для кого это руководство:</strong> для всех, кто хочет работать эффективнее — от новичков, которые только слышали про ИИ, до профессионалов, использующих нейросети каждый день.
+          </p>
+        </div>
+      </section>
+
+      <section id="weekly" class="section-card" aria-labelledby="weekly-title">
+        <div class="section-kicker">Введение</div>
+        <h2 id="weekly-title" class="section-title">Бонус: Розыгрыш Perplexity Pro на год</h2>
+        <div class="section-body">
+          <p>
+            <strong>Каждую неделю в Клубе 127 проходит розыгрыш годовой подписки Perplexity (стоимость 20&nbsp;000₽).</strong> Следите за новостями.
+          </p>
+          <p>
+            <strong>Присоединяйтесь к Клубу 127:</strong> в клубе вас ждёт коллекция из 30+ готовых виртуальных помощников, о которых пойдет речь в руководстве, и не только.
+          </p>
+          <p>
+            <strong>Ссылка для входа:</strong> <a href="https://t.me/club127_bot" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500;">@club127_bot</a>
+          </p>
+        </div>
+      </section>
+
+      <section id="new-reality" class="section-card" aria-labelledby="new-reality-title">
+        <div class="section-kicker">Основы</div>
+        <h2 id="new-reality-title" class="section-title">Новая реальность</h2>
+        <div class="section-body">
+          <p>
+            <strong>Пока вы читаете эти строки, кто-то решает задачу, на которую вы тратите 2 часа, — за 5 минут. И делает это лучше в десятки раз.</strong> И это не преувеличение.
+          </p>
+          <p>
+            Большинство людей по-прежнему используют нейросети так, будто это просто «поиграться вечером». Пишут: «Придумай текст», «Сделай красиво», «Помоги с идеей». И получают ровно то, что и должны получить — общие фразы, сухие шаблоны и разочарование.
+          </p>
+          <p>
+            Но <strong>ИИ сегодня — это уже не игрушка и не модный тренд.</strong> Это инструмент, который может решать задачи, которые раньше требовали команды специалистов.
+          </p>
+
+          <div class="dev-quote">
+            <strong>Пример из практики</strong><br><br>
+            Один из участников клуба несколько лет не мог закрыть юридический вопрос. Дело стояло на месте многие годы. После настройки виртуального помощника он загрузил в проект сотни документов. ВП разобрал весь массив, нашёл несостыковки, указал на ошибки юристов и предложил готовое письмо. Письмо проверил юрист. <strong>Дело было выиграно в короткий срок.</strong>
+          </div>
+
+          <p>
+            Это не магия. Это результат правильно настроенной системы.
+          </p>
+
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Мир делится на два типа людей:</strong></p>
+          <ul class="dev-number-list">
+            <li><span class="dev-number">1</span><span>Те, кто задаёт ИИ случайные вопросы — и получают случайные ответы</span></li>
+            <li><span class="dev-number">2</span><span>Те, кто работают по системе — и получают результат уровня топ-экспертов</span></li>
+          </ul>
+
+          <p style="margin-top: 20px;">
+            И вот что важно понять прямо сейчас:
+          </p>
+          <div class="muted-box">
+            <strong>Сегодня разрыв в эффективности создают не нейросети. Разрыв создаёт умение пользоваться ими правильно.</strong>
+          </div>
+
+          <p>
+            Это и есть новая реальность. И ваше преимущество начинается здесь — с этого руководства.
+          </p>
+        </div>
+      </section>
+
+      <section id="main-insight" class="section-card" aria-labelledby="main-insight-title">
+        <div class="section-kicker">Основы</div>
+        <h2 id="main-insight-title" class="section-title">Главный инсайт</h2>
+        <div class="section-body">
+          <p>
+            Работа с виртуальным помощником — это не просто «получение ответов».
+          </p>
+          <div class="muted-box">
+            <strong>Это ежедневный коучинг от топ-1% эксперта мира.</strong>
+          </div>
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Что происходит на самом деле:</strong></p>
+          <p>Каждый раз, общаясь с виртуальным помощником:</p>
+          <ul>
+            <li>Вы видите, как думает эксперт высочайшего уровня</li>
+            <li>Перенимаете методологии и подходы</li>
+            <li>Учитесь формулировать задачи правильно</li>
+            <li>Развиваете стратегическое мышление</li>
+          </ul>
+          <p>
+            <strong>Через 2-3 месяца работы вы сами станете значительно более экспертным в своей области.</strong> Это побочный эффект, о котором мало кто говорит.
+          </p>
+          <p>
+            Представьте, что каждый день вы наблюдаете за работой топ-консультанта, который объясняет свою логику. Невозможно не впитать этот опыт.
+          </p>
+        </div>
+      </section>
+
+      <section id="why-not-work" class="section-card" aria-labelledby="why-not-work-title">
+        <div class="section-kicker">Основы</div>
+        <h2 id="why-not-work-title" class="section-title">Почему у 90% «не работает»</h2>
+        <div class="section-body">
+          <p>
+            <strong>У большинства людей первая попытка работы с ИИ выглядит одинаково:</strong>
+          </p>
+          <ul class="dev-number-list">
+            <li><span class="dev-number">1</span><span>Открыли нейросеть</span></li>
+            <li><span class="dev-number">2</span><span>Написали что-то вроде: «Сделай текст», «Придумай идею», «Помоги с маркетингом»</span></li>
+            <li><span class="dev-number">3</span><span>Получили шаблонные фразы или километровую портянку непонятно о чём</span></li>
+            <li><span class="dev-number">4</span><span>Попробовали переформулировать</span></li>
+            <li><span class="dev-number">5</span><span>Получили такую же ерунду, только в другой форме</span></li>
+            <li><span class="dev-number">6</span><span>Разочаровались</span></li>
+          </ul>
+          <p>
+            И здесь важно понять одну вещь:
+          </p>
+          <div class="muted-box">
+            <strong>Дело не в нейросети. Дело в отсутствии системы.</strong>
+          </div>
+          <p style="margin-top: 20px;">ИИ не знает:</p>
+          <ul>
+            <li>кто вы</li>
+            <li>чем занимаетесь</li>
+            <li>какая у вас аудитория</li>
+            <li>какой стиль нужен</li>
+            <li>какие цели вы преследуете</li>
+            <li>какие материалы у вас есть</li>
+            <li>что для вас важно, а что нет</li>
+          </ul>
+          <p>
+            И когда вы не даёте ему этого фундамента — он вынужден создавать ответы «наугад». Отсюда и шаблоны, и размытые тексты, и общее разочарование.
+          </p>
+          <div class="muted-box">
+            <strong>ИИ работает только у тех, кто работает по системе.</strong> Когда есть система — нейросеть превращается в инструмент уровня топ-эксперта.
+          </div>
+        </div>
+      </section>
+
+      <section id="three-steps" class="section-card" aria-labelledby="three-steps-title">
+        <div class="section-kicker">Основы</div>
+        <h2 id="three-steps-title" class="section-title">Три шага от нуля до PRO</h2>
+        <div class="section-body">
+          <p>
+            Система, которая превращает обычную нейросеть в личного эксперта мирового уровня, состоит всего из трёх компонентов.
+          </p>
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Шаг 1: Виртуальный помощник — мозг эксперта</strong></p>
+          <p>
+            Виртуальный помощник — это цифровая модель реального специалиста, созданная на основе его многолетнего опыта, методологий, практик и выводов.
+          </p>
+          <p>
+            Он определяет как ИИ думает, какие подходы использует, как анализирует задачи и какие решения предлагает.
+          </p>
+
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Шаг 2: Проект — ваше личное рабочее пространство</strong></p>
+          <p>
+            Это среда, где ИИ помнит всё: ваш стиль, задачи, аудиторию, цели и загруженные материалы.
+          </p>
+          <p>
+            В проекте каждый диалог — продолжение предыдущего. Нейросеть перестаёт забывать контекст и выдаёт стабильный уровень качества.
+          </p>
+
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Шаг 3: База знаний и материалы — ваш контекст</strong></p>
+          <p>
+            Контекст-файл, описание бизнеса, аудитория, ваши примеры, документы, книги, данные — всё это становится фундаментом, на который опирается ВП при каждом ответе.
+          </p>
+          <p>
+            ИИ перестаёт говорить «в общем» и начинает работать именно под ваш бизнес, вашу нишу и ваш стиль.
+          </p>
+
+          <div class="muted-box" style="margin-top: 24px;">
+            <strong>Три шага. 15 минут настройки. И вы начинаете работать в x100 продуктивнее и эффективнее — в любой нише.</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="text-ai" class="section-card" aria-labelledby="text-ai-title">
+        <div class="section-kicker">Система</div>
+        <h2 id="text-ai-title" class="section-title">Что такое текстовые нейросети и какие выбрать</h2>
+        <div class="section-body">
+          <p>
+            Текстовые нейросети (или языковые модели) — это тип искусственного интеллекта, с которым вы общаетесь текстом через браузер или приложение, как в обычном мессенджере. Вы пишете вопрос или задачу — они генерируют ответ.
+          </p>
+          <p>
+            Существуют разные ИИ: ChatGPT, Claude, Perplexity, Gemini, YandexGPT, DeepSeek и другие. <strong>У всех разные сильные стороны.</strong>
+          </p>
+
+          <div class="dev-quote">
+            <strong>Рекомендация команды Клуба 127:</strong><br><br>
+            Больше года наша команда тестировала разные модели и пришла к однозначному выводу: <strong>Claude — лучший.</strong> Он самый креативный, отлично работает с файлами и документами, даёт глубокий анализ.
+          </div>
+
+          <p>
+            <strong>Проблема:</strong> Для жителей России могут быть сложности с оплатой.
+          </p>
+
+          <p>
+            <strong>Perplexity</strong> — сильнейший в анализе интернета и сборе актуальной информации. А так же <span class="inline-highlight">уникальная особенность: в Perplexity можно пользоваться другими популярными моделями</span> (Claude, ChatGPT, Gemini и другие). <strong>Работает без VPN.</strong>
+          </p>
+
+          <p>
+            <strong>Для этого руководства мы используем Claude</strong> — все скриншоты и примеры будут на нём. Принципы работы одинаковы для всех ИИ.
+          </p>
+
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Бесплатные vs Платные версии:</strong></p>
+          <div class="muted-box">
+            <strong>Для профессиональной работы платная подписка окупается меньше чем за 3 часа использования и является обязательной.</strong>
+          </div>
+
+          <p style="margin-top: 16px;">
+            Бесплатные версии с лимитами — не рассматриваются для серьёзной работы.
+          </p>
+          <p>
+            Стоимость платных версий: около 20$/месяц.
+          </p>
+        </div>
+      </section>
+
+      <section id="assistants" class="section-card" aria-labelledby="assistants-title">
+        <div class="section-kicker">Система</div>
+        <h2 id="assistants-title" class="section-title">Виртуальные помощники: ваш личный топ-эксперт</h2>
+        <div class="section-body">
+          <p>
+            Виртуальный помощник — это готовая «личность» эксперта с его опытом, методологиями, стилем работы, мышлением и специализацией, оформленная как подробная инструкция для нейросети.
+          </p>
+          <p>
+            По сути, это роль топ-специалиста с 20-летним опытом, которую вы «надеваете» на нейросеть одним кликом.
+          </p>
+
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Что РЕАЛЬНО даёт виртуальный помощник:</strong></p>
+          <ul>
+            <li><strong>Мгновенная экспертиза</strong> — профессиональные решения вместо общих советов из учебника</li>
+            <li><strong>Авторские методологии</strong> — уникальные стратегии и подходы топ-экспертов, которые адаптируются под ваши условия</li>
+            <li><strong>Глубина анализа</strong> — видит детали и нюансы, которые обычная нейросеть пропустит</li>
+            <li><strong>Экономия времени</strong> — не нужно переформулировать вопрос по 10 раз и объяснять контекст</li>
+            <li><strong>Последовательность мышления</strong> — развивает идеи логично, как реальный консультант</li>
+            <li><strong>Профессиональный язык</strong> — говорит терминами вашей индустрии, понимает специфику</li>
+            <li><strong>Стратегический подход</strong> — не просто «делает задачу», а видит общую картину и предлагает оптимальные решения</li>
+          </ul>
+
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Коллекция Клуба 127:</strong></p>
+          <p>
+            В нашей коллекции уже более 30 экспертов: от <span class="inline-highlight">Вирусного Контент-Мейкера и Мастера Обучения</span> до <span class="inline-highlight">Коуча По Достижению Целей и Тайм-менеджера Для Мам.</span>
+          </p>
+          <div class="muted-box">
+            <strong>Все виртуальные помощники бесплатны для членов клуба.</strong> Мы также всегда принимаем заявки на разработку новых ВП по вашим запросам — бесплатно.
+          </div>
+
+          <p style="margin-top: 16px;">
+            <strong>Все виртуальные помощники работают в любых нейросетях</strong> — Claude, ChatGPT, Perplexity, Gemini и других.
+          </p>
+        </div>
+      </section>
+
+      <section id="no-way" class="section-card" aria-labelledby="no-way-title">
+        <div class="section-kicker">Система</div>
+        <h2 id="no-way-title" class="section-title">Проекты: БЕЗ ЭТОГО — НИКУДА!</h2>
+        <div class="section-body">
+          <p>
+            Проект — это изолированное рабочее пространство в нейросети, где сохраняется весь контекст, загруженные файлы и настройки поведения ИИ.
+          </p>
+          <p>
+            Это позволяет вести <span class="inline-highlight">безлимитные по времени диалоги без потери качества</span> и без переобучения нейросети каждый раз.
+          </p>
+
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Что происходит БЕЗ проектов (боль 90%):</strong></p>
+          <ul>
+            <li><strong>Каждый чат — с чистого листа.</strong> Заново объясняете: кто вы, чем занимаетесь, какая аудитория, какой стиль нужен</li>
+            <li><strong>Контекст испаряется через 40 сообщений.</strong> Нейросеть начинает забывать начало разговора. Приходится всё напоминать</li>
+            <li><strong>Бесконечное повторение.</strong> «Я же говорил, что моя целевая аудитория — предприниматели!» — но ИИ уже не помнит</li>
+            <li><strong>Безликие шаблонные ответы.</strong> Нейросеть даёт общие советы, потому что не знает специфику вашего бизнеса</li>
+            <li><strong>Потеря времени.</strong> Каждый новый запрос = минимум 3 минуты на объяснение контекста</li>
+          </ul>
+
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Что даёт работа В проектах:</strong></p>
+          <ul>
+            <li><strong>Нейросеть помнит всё постоянно.</strong> Один раз настроили — работает месяцами. Стиль, контекст, цели, аудитория всегда активны</li>
+            <li><strong>Бесконечные диалоги без потери качества.</strong> Можно вести беседу месяцами. ИИ развивает мысль последовательно, как реальный стратег</li>
+            <li><strong>Загрузка массива знаний.</strong> Книги, методички, кейсы, ваши работы — всё становится базой знаний ИИ</li>
+            <li><strong>100% персонализация.</strong> ИИ работает в логике вашего бизнеса, говорит вашим языком, понимает ваши цели</li>
+            <li><strong>Мгновенный старт работы.</strong> Открыли проект → написали запрос → получили релевантный результат. Без объяснения контекста каждый раз</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="heart" class="section-card" aria-labelledby="heart-title">
+        <div class="section-kicker">Система</div>
+        <h2 id="heart-title" class="section-title">База знаний: сердце всей системы</h2>
+        <div class="section-body">
+          <p>
+            База знаний — это информация о вас и вашем бизнесе, которую вы загружаете в проект один раз, и ИИ использует её при каждом ответе автоматически.
+          </p>
+          <p>
+            <strong>Без базы знаний:</strong> ИИ не знает кто вы, чем занимаетесь, кто ваша аудитория, какой стиль нужен. Отвечает абстрактно, результат похож на работу конкурентов.
+          </p>
+          <div class="muted-box">
+            <strong>С базой знаний:</strong> ИИ работает в логике вашего бизнеса, говорит вашим языком, понимает ваши цели. Результат персонализирован на 100%.
+          </div>
+
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Два ключевых компонента:</strong></p>
+
+          <p style="margin-bottom: 16px;"><strong>Компонент 1: Контекст-файл</strong></p>
+          <p>
+            Текстовый документ с описанием: кто вы, чем занимаетесь, ваша аудитория, ваши цели, стиль работы, специфика бизнеса.
+          </p>
+          <p>
+            Это даёт ИИ конкретную информацию о вашем уникальном контексте. <span class="inline-highlight">Вместо общих советов ИИ опирается на реальные данные.</span>
+          </p>
+          <div class="muted-box">
+            <strong>Хорошая новость:</strong> ИИ сам поможет вам создать этот контекст-файл за 5 минут. Дальше в руководстве мы покажем как это делать.
+          </div>
+
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Компонент 2: Материалы</strong></p>
+          <p>
+            Конкретные документы для анализа и работы — PDF, Word, Excel, изображения, книги, методички.
+          </p>
+
+          <p style="margin-top: 16px; margin-bottom: 12px;"><strong>Что загружать:</strong></p>
+          <ul>
+            <li><span class="inline-highlight">Примеры ваших лучших работ:</span> топовые посты, продающие письма, успешные презентации</li>
+            <li><span class="inline-highlight">Примеры работ конкурентов:</span> посты с высоким вовлечением, стратегии из вашей ниши</li>
+            <li><span class="inline-highlight">Книги и методички:</span> PDF по маркетингу, гайды, исследования рынка</li>
+            <li><span class="inline-highlight">Данные и аналитика:</span> таблицы с метриками, статистика аудитории</li>
+            <li><span class="inline-highlight">Обучающие материалы:</span> конспекты курсов, чек-листы, шаблоны</li>
+          </ul>
+
+          <p style="margin-top: 16px; margin-bottom: 12px;"><strong>Что это даёт:</strong></p>
+          <ul>
+            <li>ИИ изучит ваш стиль и будет его копировать</li>
+            <li>ИИ применит проверенные методологии</li>
+            <li>ИИ будет опираться на реальные данные</li>
+            <li>ИИ получит экспертные знания вашей отрасли</li>
+          </ul>
+
+          <div class="dev-quote">
+            <strong>Золотое правило:</strong> Качество важнее количества. <strong>Лучше 5-10 отличных примеров, чем 30 посредственных.</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="setup" class="section-card" aria-labelledby="setup-title">
+        <div class="section-kicker">Практика</div>
+        <h2 id="setup-title" class="section-title">Пошаговая настройка системы за 10-15 минут</h2>
+        <div class="section-body">
+          <p>
+            Сейчас вы настроите всю систему, которая будет работать месяцами. Следуйте инструкциям шаг за шагом.
+          </p>
+          <div class="muted-box">
+            <strong>Время на полную настройку:</strong> 10-15 минут<br>
+            <strong>Результат:</strong> Работающая система на месяцы вперёд
+          </div>
+
+          <p style="margin-top: 24px; margin-bottom: 16px;"><span class="inline-highlight"><strong>ШАГ 1: Регистрация в Claude (2 минуты)</strong></span></p>
+          <p>
+            Переходим на <strong>https://claude.ai</strong> и регистрируемся через Google (быстрее всего) или через Email. Подтверждаем почту, если регистрировались через Email, и попадаем на главный экран.
+          </p>
+          <img src="./images/step-1-claude-registration.png" alt="Регистрация в Claude" class="screenshot-clickable" onclick="openImageModal(this)" style="max-width: 100%; border-radius: 8px; margin: 16px 0;">
+
+          <p style="margin-top: 24px; margin-bottom: 16px;"><span class="inline-highlight"><strong>ШАГ 2: Создание вашего первого проекта (2 минуты)</strong></span></p>
+          <ul class="dev-number-list">
+            <li><span class="dev-number">1</span><span>Смотрим в левую боковую панель</span></li>
+            <li><span class="dev-number">2</span><span>Находим раздел "Projects" (Проекты)</span></li>
+            <li><span class="dev-number">3</span><span>Нажимаем кнопку и создаем проект</span></li>
+            <li><span class="dev-number">4</span><span>Вводим название проекта</span></li>
+            <li><span class="dev-number">5</span><span>Нажимаем "Create"</span></li>
+          </ul>
+          <p style="margin-top: 16px;">
+            <strong>Совет:</strong> Чёткое название проекта помогает легко ориентироваться, когда у вас будет много проектов.
+          </p>
+          <img src="./images/step-2-projects-sidebar.png" alt="Боковая панель и создание проекта" class="screenshot-clickable" onclick="openImageModal(this)" style="max-width: 100%; border-radius: 8px; margin: 16px 0;">
+          <p>
+            <strong>Результат:</strong> У вас появился проект в списке слева, если добавить его в избранное
+          </p>
+
+          <p style="margin-top: 24px; margin-bottom: 16px;"><span class="inline-highlight"><strong>ШАГ 3: Добавление виртуального помощника (3 минуты)</strong></span></p>
+          <div class="muted-box">
+            <strong>Это момент, когда обычная ИИ превращается в эксперт мирового уровня.</strong>
+          </div>
+          <ul class="dev-number-list">
+            <li><span class="dev-number">1</span><span>Открываем созданный проект</span></li>
+            <li><span class="dev-number">2</span><span>Попадаем в настройки проекта</span></li>
+            <li><span class="dev-number">3</span><span>Находим кнопку "+" для добавления файлов</span></li>
+            <li><span class="dev-number">4</span><span>Скачиваем файл виртуального помощника из Клуба 127</span></li>
+            <li><span class="dev-number">5</span><span>Нажимаем "+" и загружаем файл ВП</span></li>
+            <li><span class="dev-number">6</span><span>Ждём загрузки файла</span></li>
+          </ul>
+          <img src="./images/step-3-added-vp.png" alt="Добавили виртуального помощника" class="screenshot-clickable" onclick="openImageModal(this)" style="max-width: 100%; border-radius: 8px; margin: 16px 0;">
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Дополнительно: Instructions</strong></p>
+          <p>
+            В настройках проекта также есть поле <strong>"Instructions"</strong> — это дополнительные инструкции для настройки поведения ИИ под ваш конкретный проект. Можно использовать для уточнения стиля, формата ответов или специфических требований.
+          </p>
+          <img src="./images/step-4-instructions.png" alt="Добавили Instructions" class="screenshot-clickable" onclick="openImageModal(this)" style="max-width: 100%; border-radius: 8px; margin: 16px 0;">
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Проверка работоспособности:</strong></p>
+          <p>
+            Открываем чат проекта и пишем:
+          </p>
+          <div class="dev-quote">
+            «Представься и расскажи, чем ты можешь помочь»
+          </div>
+          <p>
+            Если нейросеть ответит <span class="inline-highlight">от лица эксперта</span> с описанием своих компетенций — <strong>всё работает идеально!</strong>
+          </p>
+          <img src="./images/step-5-vp-answer.png" alt="Ответ виртуального помощника" class="screenshot-clickable" onclick="openImageModal(this)" style="max-width: 100%; border-radius: 8px; margin: 16px 0;">
+
+          <p style="margin-top: 24px; margin-bottom: 16px;"><span class="inline-highlight"><strong>ШАГ 4: Создание контекст-файла о себе (5 минут)</strong></span></p>
+          <div class="muted-box">
+            <strong>ЭТО ОСНОВА ВСЕЙ СИСТЕМЫ!</strong>
+          </div>
+
+          <p style="margin-top: 16px;">
+            В чате проекта (где уже добавлен виртуальный помощник) напишите:
+          </p>
+          <div class="dev-quote">
+            «Привет! Я хочу создать контекст-файл о себе и своём бизнесе, чтобы ты работал максимально эффективно.<br><br>
+            Задай мне 10-15 ключевых вопросов, ответы на которые помогут тебе понять: кто я, чем занимаюсь, мои цели и задачи, моя аудитория, мой стиль работы, контекст моего бизнеса.<br><br>
+            После моих ответов составь итоговый контекст-файл в структурированном формате.»
+          </div>
+
+          <p>
+            <strong>ИИ-эксперт задаст вопросы</strong> — отвечайте максимально честно и подробно.
+          </p>
+
+          <p style="margin-top: 16px; margin-bottom: 12px;"><strong>Альтернативный способ:</strong></p>
+          <p>
+            Можете просто в свободной форме описать себя, свой бизнес, аудиторию, цели и стиль работы — одним текстом. Затем попросите ИИ создать структурированный контекст-файл на основе вашего описания.
+          </p>
+
+          <div class="muted-box" style="margin-top: 16px;">
+            <strong>Не бойтесь «мямлить» или формулировать неидеально</strong> — пишите как думаете, эксперт всё поймёт и структурирует. Искренность важнее формулировки.
+          </div>
+
+          <p style="margin-top: 16px;">
+            После ваших ответов <strong>ИИ создаст файл</strong> в структурированном формате.
+          </p>
+
+          <p style="margin-top: 16px;">
+            Затем попросите ИИ доработать:
+          </p>
+          <div class="dev-quote">
+            «Отлично! Теперь проанализируй этот контекст-файл и добавь: какие важные детали я мог упустить? Какие дополнительные сведения помогут тебе работать эффективнее?<br><br>
+            Задай мне ещё 3-5 уточняющих вопросов для полноты картины.»
+          </div>
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Финальная версия:</strong></p>
+          <ul class="dev-number-list">
+            <li><span class="dev-number">1</span><span>Сохраняйте файл который получили</span></li>
+            <li><span class="dev-number">2</span><span>Загружайте в проект</span></li>
+          </ul>
+
+          <p style="margin-top: 24px; margin-bottom: 16px;"><span class="inline-highlight"><strong>ШАГ 5: Добавление дополнительных материалов (2 минуты)</strong></span></p>
+          <p>
+            Теперь усильте систему дополнительными материалами.
+          </p>
+          <p style="margin-bottom: 12px;"><strong>Что загружать:</strong></p>
+          <ul>
+            <li>Примеры ваших лучших работ или работ конкурентов (топовые посты, продающие письма, успешные презентации)</li>
+            <li>Книги и методички (PDF по вашей теме, гайды и исследования)</li>
+            <li>Данные и аналитика (таблицы с метриками, статистика аудитории)</li>
+          </ul>
+
+          <img src="./images/step-6-additional-files.png" alt="Добавляем дополнительные файлы" class="screenshot-clickable" onclick="openImageModal(this)" style="max-width: 100%; border-radius: 8px; margin: 16px 0;">
+
+          <div class="dev-quote">
+            <strong>Золотое правило:</strong> Качество важнее количества. Лучше 5-10 отличных примеров, чем 30 посредственных.
+          </div>
+
+          <p style="margin-top: 24px; margin-bottom: 16px;"><span class="inline-highlight"><strong>ШАГ 6: Первый реальный запрос (1 минута)</strong></span></p>
+          <p>
+            Всё настроено! Получите первый результат топового уровня.
+          </p>
+          <p>
+            Откройте чат проекта и напишите простой запрос:
+          </p>
+          <ul>
+            <li>«Создай пост для Телеграм про [ваша тема]»</li>
+            <li>«Проанализируй эту таблицу и найди основные тренды» (прикрепите файл)</li>
+            <li>«Помоги составить план email-рассылки на 3 письма про [тема]»</li>
+          </ul>
+
+          <p style="margin-top: 16px;">
+            <strong>Виртуальный помощник:</strong>
+          </p>
+          <ul>
+            <li>Обратится к вашему контекст-файлу</li>
+            <li>Учтёт вашу аудиторию и стиль</li>
+            <li>Задаст уточняющие вопросы, если нужно</li>
+            <li>Даст результат, адаптированный под вас</li>
+          </ul>
+
+          <p style="margin-top: 16px;">
+            <strong>Если хотите ещё более точный результат</strong> — добавьте детали в запрос.
+          </p>
+
+          <p style="margin-top: 24px; margin-bottom: 16px;"><span class="inline-highlight"><strong>ШАГ 7: Доведение до совершенства через итерации</strong></span></p>
+          <p>
+            Получили ответ? <strong>Редко когда идеально с первого раза. И это нормально!</strong>
+          </p>
+          <div class="muted-box">
+            <strong>Ключевой принцип: НЕ начинайте заново — улучшайте результат.</strong>
+          </div>
+
+          <p style="margin-top: 16px; margin-bottom: 12px;"><strong>Полезные фразы для итераций:</strong></p>
+          <ul>
+            <li>«Отлично! Теперь [конкретное улучшение]»</li>
+            <li>«Хорошо, но измени [что] на [что хочу]»</li>
+            <li>«Добавь больше [конкретики/примеров/эмоций]»</li>
+            <li>«Сократи до [N] знаков, сохранив ключевые мысли»</li>
+            <li>«Это на 8/10. Что нужно изменить для 10/10?»</li>
+          </ul>
+
+          <div class="dev-quote">
+            <strong>Секрет мастерства:</strong> Профессионалы делают 2-4 итерации даже на простых задачах.
+          </div>
+
+          <p style="margin-top: 16px;">
+            <strong>После 3 итераций</strong> вы получаете результат, который невозможно отличить от работы топового специалиста.
+          </p>
+
+          <p style="margin-top: 24px; margin-bottom: 0;">
+            <strong>ПОЗДРАВЛЯЕМ! Система настроена.</strong>
+          </p>
+          <p style="margin-top: 16px;">
+            Теперь у вас есть личный эксперт мирового уровня, который помнит всё о вас и вашем бизнесе, работает в вашем стиле и даёт результаты уровня топ-1%.
+          </p>
+        </div>
+      </section>
+
+      <section id="advanced" class="section-card" aria-labelledby="advanced-title">
+        <div class="section-kicker">Практика</div>
+        <h2 id="advanced-title" class="section-title">Продвинутые техники уровня PRO</h2>
+        <div class="section-body">
+          <p>
+            Эти четыре техники используют эксперты для решения сложных задач. Освоив их, вы выжмете из ИИ максимум.
+          </p>
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Техника 1: Цепочка шагов (для сложных задач)</strong></p>
+          <p>
+            Вместо того чтобы просить «сделать всё сразу», <span class="inline-highlight">ведите ИИ пошагово</span>. Это даёт контроль и многократно улучшает качество.
+          </p>
+          <p style="margin-bottom: 12px;">Разбиваете большую задачу на последовательные шаги. ИИ «думает» на каждом этапе, результат становится глубже.</p>
+
+          <p style="margin-bottom: 8px;"><strong>Пример:</strong> Задача — создать контент-стратегию для запуска продукта.</p>
+          <div class="dev-quote">
+            <strong>Неправильно:</strong> «Создай контент-стратегию для запуска моего продукта»
+          </div>
+          <div class="dev-quote" style="margin-top: 12px;">
+            <strong>Правильно (цепочка шагов):</strong><br><br>
+            Шаг 1: «Проанализируй мою целевую аудиторию и выдели 5 главных болей»<br><br>
+            Шаг 2: «Для каждой боли предложи тему контента, которая её закроет»<br><br>
+            Шаг 3: «Возьми тему №2 и создай подробный план поста с крючками»<br><br>
+            Шаг 4: «Напиши полный текст поста по этому плану»
+          </div>
+
+          <p style="margin-top: 16px;">
+            <strong>Результат:</strong> Вместо общей стратегии получили глубоко проработанный контент, адаптированный под реальные боли аудитории.
+          </p>
+          <p style="margin-top: 12px;"><strong>Когда использовать:</strong> Стратегии, сложные проекты, аналитика, исследования, разработка методологий.</p>
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Техника 2: Самокритика ИИ (удвоение качества)</strong></p>
+          <p>
+            Попросите ИИ <span class="inline-highlight">проанализировать и улучшить свой же ответ</span>. Доказано: это повышает качество на 15-20%.
+          </p>
+
+          <p style="margin-top: 12px; margin-bottom: 8px;"><strong>Пример:</strong></p>
+          <div class="dev-quote">
+            Вы: «Создай email-письмо для возврата клиента после покупки»<br><br>
+            ВП: [Создаёт письмо]<br><br>
+            Вы: «Отлично! Теперь проанализируй своё письмо критически: какие слабые места ты видишь? Что можно улучшить? Где можно добавить конкретики или эмоций? После анализа создай улучшенную версию 2.0»<br><br>
+            ВП: [Анализирует и создаёт версию 2.0]
+          </div>
+
+          <p style="margin-top: 16px;">
+            <strong>Результат:</strong> Второй вариант обычно на 40% сильнее первого — более точный, конкретный, с лучшей структурой.
+          </p>
+          <p style="margin-top: 12px;"><strong>Когда использовать:</strong> Тексты, письма, посты, презентации, стратегии — любой контент, где важно качество.</p>
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Техника 3: Обзор 360° (множество перспектив)</strong></p>
+          <p>
+            Попросите ИИ <span class="inline-highlight">рассмотреть вашу задачу с разных точек зрения</span>. Вы получите объёмное видение и найдёте неочевидные решения.
+          </p>
+
+          <p style="margin-top: 12px; margin-bottom: 8px;"><strong>Пример:</strong></p>
+          <div class="dev-quote">
+            «Проанализируй мою идею запуска онлайн-курса с позиции маркетолога, методиста, финансиста, скептичного клиента и восторженного фаната. Для каждой роли дай 3-5 ключевых инсайтов.»
+          </div>
+
+          <p style="margin-top: 16px;">
+            <strong>Результат:</strong> Всестороннее видение проекта, видите риски и возможности, которые не заметили бы сами.
+          </p>
+          <p style="margin-top: 12px;"><strong>Когда использовать:</strong> Запуск продуктов, стратегические решения, анализ идей, подготовка к питчам.</p>
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Техника 4: Ветвление идей (для креатива)</strong></p>
+          <p>
+            Вместо одного решения попросите ИИ <span class="inline-highlight">создать несколько вариантов в разных направлениях</span>. Затем выбираете лучшее или комбинируете.
+          </p>
+
+          <p style="margin-top: 12px; margin-bottom: 8px;"><strong>Пример:</strong></p>
+          <div class="dev-quote">
+            «Создай 5 заголовков для поста про запуск курса в разных стилях: провокационный, с цифрой и обещанием, вопрос, интригующий, с доказательством. Объясни, на кого каждый подействует.»
+          </div>
+
+          <p style="margin-top: 16px;">
+            <strong>Результат:</strong> Видите спектр возможностей — от провокационного до социального доказательства.
+          </p>
+          <p style="margin-top: 12px;"><strong>Когда использовать:</strong> Креативные задачи, заголовки, идеи для контента, нейминг, дизайн-концепции.</p>
+
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Как комбинировать техники</strong></p>
+          <p>
+            Профессионалы часто используют несколько техник вместе:
+          </p>
+          <ul class="dev-number-list">
+            <li><span class="dev-number">1</span><span><strong>Цепочка шагов</strong> → создаёте стратегию пошагово</span></li>
+            <li><span class="dev-number">2</span><span><strong>Обзор 360°</strong> → смотрите на неё с разных ролей</span></li>
+            <li><span class="dev-number">3</span><span><strong>Самокритика</strong> → улучшаете слабые места</span></li>
+            <li><span class="dev-number">4</span><span><strong>Ветвление идей</strong> → генерируете варианты реализации</span></li>
+          </ul>
+
+          <div class="muted-box" style="margin-top: 20px;">
+            <strong>Результат:</strong> Стратегия уровня консалтингового агентства за 30 минут работы.
+          </div>
+
+          <p style="margin-top: 16px;">
+            Эти техники кажутся сложными, но после 2-3 применений становятся естественными. Начните с одной, освойте, добавьте следующую.
+          </p>
+        </div>
+      </section>
+
+      <section id="mistakes" class="section-card" aria-labelledby="mistakes-title">
+        <div class="section-kicker">Практика</div>
+        <h2 id="mistakes-title" class="section-title">Топ-5 ошибок и как их избежать</h2>
+        <div class="section-body">
+          <p>
+            Даже после настройки проекта многие допускают ошибки, которые убивают эффективность. Разберём самые частые.
+          </p>
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Ошибка 1: Работа без проектов</strong></p>
+          <p>
+            Человек настроил один проект, всё работает отлично. Но потом начинает использовать обычные чаты для новых задач — «это же быстрее».
+          </p>
+          <p>
+            <strong>Результат:</strong> Возвращается к объяснению контекста каждый раз, теряет время, получает посредственные ответы.
+          </p>
+          <div class="muted-box">
+            <strong>Как избежать:</strong> Создавайте отдельный проект под каждую крупную область задач (контент, аналитика, клиенты). <strong>Правило: если задача повторяется больше 2 раз — создайте проект.</strong>
+          </div>
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Ошибка 2: Не проверять факты и цифры</strong></p>
+          <p>
+            <strong>Что происходит:</strong> ИИ может придумывать статистику, цитаты, даты, названия исследований. Человек использует это в работе — потом выглядит непрофессионально.
+          </p>
+          <div class="muted-box">
+            <strong>Как избежать:</strong> Любые важные данные (статистика, цитаты, даты, исследования) всегда перепроверяйте через поиск или Perplexity.
+          </div>
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Ошибка 3: Ожидание идеала с первого раза</strong></p>
+          <p>
+            Получили ответ на 7/10 → разочаровались → «ИИ плохо работает» → бросили.
+          </p>
+          <div class="muted-box">
+            <strong>Правильное мышление:</strong> Первый ответ — это черновик. Профессионалы делают 2-4 итерации на любой задаче.
+          </div>
+          <p style="margin-top: 16px;">
+            <strong>Формула:</strong> Запрос → Черновик → 2-3 правки → Идеал
+          </p>
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Ошибка 4: Игнорирование обратной связи</strong></p>
+          <p>
+            <strong>Проблема:</strong> ИИ не знает что вам не понравилось и продолжает делать те же ошибки.
+          </p>
+          <div class="muted-box">
+            <strong>Как избежать:</strong> Всегда давайте обратную связь. ВП запоминает ваши предпочтения и адаптируется.
+          </div>
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Ошибка 5: Не обновлять контекст-файл</strong></p>
+          <p>
+            Создали контекст-файл в начале. Через 3 месяца бизнес изменился, но файл остался старым.
+          </p>
+          <p style="margin-top: 12px;">
+            <strong>Результат:</strong> ИИ даёт рекомендации на основе устаревшей информации.
+          </p>
+          <div class="muted-box">
+            <strong>Как избежать:</strong> Обновляйте контекст-файл при смене стратегии, запуске нового продукта, или каждые 3-6 месяцев профилактически.
+          </div>
+
+          <div class="dev-quote" style="margin-top: 24px;">
+            <strong>Главное:</strong> Все эти ошибки — естественные. Разница между 90% и 1% в том, что первые застревают в ошибках, а вторые осознают их и исправляют.
+          </div>
+        </div>
+      </section>
+
+      <section id="act-now" class="section-card" aria-labelledby="act-now-title">
+        <div class="section-kicker">Практика</div>
+        <h2 id="act-now-title" class="section-title">Начните прямо сейчас</h2>
+        <div class="section-body">
+          <p>
+            <strong>Вы дошли до конца руководства. Поздравляю!</strong>
+          </p>
+          <p style="margin-top: 16px;">
+            Теперь у вас есть <span class="inline-highlight">полная карта трансформации</span> от новичка до мастера, использующего виртуальных помощников на 100%.
+          </p>
+
+          <p style="margin-top: 20px; margin-bottom: 16px;"><strong>Чек-лист: Ваш путь за 20 минут</strong></p>
+          <p>Сделайте это прямо сейчас, пока не остыли:</p>
+          <ul>
+            <li><strong>Шаг 1:</strong> Зарегистрируйтесь в Claude (2 минуты)</li>
+            <li><strong>Шаг 2:</strong> Создайте свой первый проект (2 минуты)</li>
+            <li><strong>Шаг 3:</strong> Скачайте виртуального помощника из Клуба 127 (3 минуты)</li>
+            <li><strong>Шаг 4:</strong> Создайте контекст-файл (5 минут)</li>
+            <li><strong>Шаг 5:</strong> Загрузите примеры ваших работ (2 минуты)</li>
+            <li><strong>Шаг 6:</strong> Сделайте первый запрос (3 минуты)</li>
+            <li><strong>Шаг 7:</strong> Улучшите результат через итерации (3 минуты)</li>
+          </ul>
+
+          <div class="muted-box" style="margin-top: 20px;">
+            <strong>Итого: 20 минут — и у вас уже есть результат!</strong>
+          </div>
+
+          <p style="margin-top: 24px;">
+            <strong>Не откладывайте.</strong> Не ждите «идеального момента». Не думайте «потом разберусь».
+          </p>
+          <div class="dev-quote" style="margin-top: 16px;">
+            <strong>Следующие 20 минут определят, останетесь ли вы в 99% тех, кто просто «почитал», или войдёте в 1% мастеров, которые внедрили систему и изменили всё.</strong>
+          </div>
+
+          <p style="margin-top: 20px;">
+            Вы узнали то, что знают единицы. Система готова. Осталось только начать.
+          </p>
+          <p style="margin-top: 16px;">
+            <strong>А через 3 месяца вы не узнаете себя.</strong> Вы не поверите, какой путь преодолели и на что теперь способны.
+          </p>
+
+          <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Не забудьте про бонусы:</strong></p>
+          <ul>
+            <li><strong>Розыгрыш Perplexity Pro на год</strong> (20 000₽) — каждую неделю в клубе</li>
+            <li><strong>30+ готовых виртуальных помощников</strong> — бесплатно для членов Клуба 127</li>
+            <li><strong>Разработка новых ВП</strong> по вашим запросам — бесплатно</li>
+          </ul>
+
+          <p style="margin-top: 20px;">
+            <strong>Присоединяйтесь к Клубу 127:</strong> <a href="https://t.me/club127_bot" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500;">@club127_bot</a>
+          </p>
+
+          <p style="margin-top: 24px;">
+            <strong>Последнее:</strong>
+          </p>
+          <p style="margin-top: 12px;">
+            Это руководство — не просто инструкция. <span class="inline-highlight">Это ключ к новой реальности</span>, где вы работаете в x100 эффективнее, где рутина автоматизирована, где у вас есть команда экспертов мирового уровня 24/7.
+          </p>
+          <div class="dev-quote" style="margin-top: 16px;">
+            Мир уже изменился. Вопрос только в том — изменитесь ли вы вместе с ним или останетесь позади?
+          </div>
+
+          <p style="margin-top: 20px;">
+            Выбор за вами.
+          </p>
+          <p style="margin-top: 16px;">
+            <strong>Успехов на вашем пути!</strong>
+          </p>
+        </div>
+      </section>
+    </article>
+
+    <aside class="sidebar" aria-label="Навигация по странице">
+      <div class="sidebar-title">Содержание</div>
+      <nav class="sidebar-nav" id="sidebar-nav">
+        <div class="sidebar-group-label" style="color: var(--accent);">ВВЕДЕНИЕ</div>
+        <a href="#intro" data-section="intro">Как пользоваться руководством</a>
+        <a href="#weekly" data-section="weekly">Еженедельный розыгрыш в Club127</a>
+
+        <div class="sidebar-group-label" style="color: var(--accent);">ОСНОВЫ</div>
+        <a href="#new-reality" data-section="new-reality">Новая реальность</a>
+        <a href="#main-insight" data-section="main-insight">Главный инсайт</a>
+        <a href="#why-not-work" data-section="why-not-work">Почему у 90% «не работает»</a>
+        <a href="#three-steps" data-section="three-steps">Три шага от нуля до PRO</a>
+
+        <div class="sidebar-group-label" style="color: var(--accent);">СИСТЕМА</div>
+        <a href="#text-ai" data-section="text-ai">Что такое текстовые нейросети</a>
+        <a href="#assistants" data-section="assistants">Виртуальные помощники</a>
+        <a href="#no-way" data-section="no-way">БЕЗ ЭТОГО — НИКУДА!</a>
+        <a href="#heart" data-section="heart">Сердце всей системы</a>
+
+        <div class="sidebar-group-label" style="color: var(--accent);">ПРАКТИКА</div>
+        <a href="#setup" data-section="setup">Пошаговая настройка</a>
+        <a href="#advanced" data-section="advanced">Продвинутые техники</a>
+        <a href="#mistakes" data-section="mistakes">Топ-5 ошибок</a>
+        <a href="#act-now" data-section="act-now">Действуйте СЕЙЧАС!</a>
+
+      </nav>
+      <div class="sidebar-footer">
+        Техподдержка и все вопросы в Telegram: <a href="https://t.me/Club127_Support" target="_blank" rel="noopener noreferrer">@Club127_Support</a>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    // Логика приветственного экрана
+    const input = document.getElementById('splash-input');
+    const container = document.getElementById('input-container');
+    const submitBtn = document.getElementById('submit-btn');
+    const splashContainer = document.getElementById('splash-container');
+    const errorLabel = document.getElementById('error-label');
+
+    const handleSubmit = () => {
+      const normalized = input.value.trim().toLowerCase();
+
+      if (normalized === 'да') {
+        splashContainer.classList.add('animate-fade-out');
+        setTimeout(() => {
+          splashContainer.style.display = 'none';
+        }, 500);
+      } else {
+        container.classList.add('animate-shake', 'input-error');
+        errorLabel.classList.remove('hidden');
+        input.value = '';
+
+        setTimeout(() => {
+          container.classList.remove('animate-shake', 'input-error');
+        }, 350);
+      }
+    };
+
+    submitBtn.addEventListener('click', handleSubmit);
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        handleSubmit();
+      }
+    });
+
+    // Подсветка активного пункта меню
+    (function () {
+      const links = Array.from(
+        document.querySelectorAll('#sidebar-nav a[href^="#"]')
+      );
+      const sections = links
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+      function onScroll() {
+        const offset = 120;
+        let activeId = null;
+
+        for (const section of sections) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top - offset <= 0) {
+            activeId = section.id;
+          }
+        }
+
+        if (!activeId && sections[0]) {
+          activeId = sections[0].id;
+        }
+
+        links.forEach(link => {
+          const isActive = link.getAttribute('data-section') === activeId;
+          link.classList.toggle('is-active', isActive);
+        });
+      }
+
+      document.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('load', onScroll);
+    })();
+  </script>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      © 2025 Клуб 127 | Твои виртуальные помощники
+    </div>
+  </footer>
+
+  <div id="imageModal" class="image-modal" onclick="closeImageModal(event)">
+    <div class="image-modal-content">
+      <span class="image-modal-close" onclick="closeImageModal()">&times;</span>
+      <img id="modalImage" src="" alt="">
+    </div>
+  </div>
+
+  <script>
+    function openImageModal(imgElement) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modalImg.src = imgElement.src;
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeImageModal(event) {
+      const modal = document.getElementById('imageModal');
+      if (event && event.target !== modal) return;
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
+    
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeImageModal();
+      }
+    });
+  </script>
+</body>
+</html>
